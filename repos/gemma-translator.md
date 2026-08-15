@@ -1,31 +1,33 @@
 ---
 title: gemma-translator
 url: https://github.com/google-gemma/gemma-translator
-tags: [voice, translation, offline, gemma, raspberry-pi, apache-2.0]
-added: 2026-08-12
+tags: [translation, speech-to-text, tts, on-device, raspberry-pi, gemma, litert-lm]
+added: 2026-08-15
 added_by: Denis
 ---
 
-Traductor de voz on-device y fully offline: **Gemma 4** (`gemma4-e2b` vía LiteRT-LM) + **Moonshine** STT/TTS. UI web estilo terminal pensada para pantallas chicas (p. ej. 480×320). Proyecto de Google Creative Lab (no producto oficial de Google). Upstream de [bavel](bavel.md).
+Traductor de voz on-device y offline de Google, pensado como appliance de hardware (Raspberry Pi 5 + pantalla chica) más que como app de escritorio. Corre `gemma4-e2b` local vía LiteRT-LM, con Moonshine para STT/TTS.
 
 ## Por qué vale la pena
 
-- **Offline real post-setup**: inferencia local con LiteRT-LM; sin cloud ni API keys después de bajar el modelo.
-- **Kiosk de dos carriles**: dos personas/idiomas cara a cara; push-to-talk, revolver de idiomas, modos landscape (persona activa) y vertical (dos manos).
-- **Appliance Pi**: target Raspberry Pi 5 8 GB + mic + speaker + display; `deploy-pi.sh` arma systemd + Chromium kiosk. Incluye STLs de carcasa en `stl/`.
-- **Stack unificado**: un `start.sh` levanta LiteRT-LM (:9379), API Python (:3000) y frontend React/Vite (:5173 en dev).
-- **Hecho con Antigravity** (según el README): buen ejemplo de referencia para demos edge de traducción por voz.
+- **100% local**: una vez descargado el modelo (`gemma4-e2b` vía LiteRT-LM), no necesita internet.
+- **Pensado para kiosco físico**: UI retro-terminal optimizada para pantallas chicas (480x320), con `deploy-pi.sh` que arma un servicio systemd + Chromium en modo kiosko en una Raspberry Pi 5.
+- **Modo conversación de dos carriles**: dos personas enfrentadas, cada una habla su idioma y escucha la traducción en el suyo (landscape "active person" o modos alternativos).
+- **Stack**: frontend React/Vite + servidor Python (`http.server`) que orquesta LiteRT-LM y Moonshine.
+- Requiere hardware específico (Pi 5 8GB + mic + speaker + display) — no es para correr en cualquier laptop sin adaptar.
 
 ## Uso básico
 
 ```bash
 chmod +x setup.sh download_model.sh start.sh deploy-pi.sh
-./setup.sh            # venv + deps (Python 3.10+, Node 18+)
-./download_model.sh   # gemma4-e2b → LiteRT-LM
-./start.sh            # o ./start.sh --prod
-# appliance: ./deploy-pi.sh
+./setup.sh
+./download_model.sh
+./start.sh          # dev: UI en :5173, API/LiteRT-LM en :3000/:9379
+./start.sh --prod   # sirve frontend compilado desde backend/server.py en :3000
 ```
 
-UI: `http://localhost:5173` (dev) o `:3000` (prod). Linux/macOS.
+Para deploy permanente en Raspberry Pi: `./deploy-pi.sh`.
+
+Relacionado: [[utopiaia-translator]], que es una versión web (browser, WebGPU, sin instalación) del mismo concepto de "Gemma Translator".
 
 **Licencia**: Apache 2.0
