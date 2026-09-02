@@ -9,9 +9,14 @@ repos/tools they find, in Obsidian format (a folder of markdown files) so they d
 in individual bookmarks. There is no build, lint, or test tooling — every task here is
 creating or editing markdown entries under `repos/`.
 
-The long-term intent is for this to feed an integrator that ingests what the team discusses in
-their Slack channel (see commit history: entries are frequently batch-imported from Slack
-threads or the `flock-ai` channel).
+Entries are frequently batch-imported from the team's `flock-ai` Slack channel. That import is
+automated by the `/slack-import` skill (`.claude/skills/slack-import/SKILL.md`), which reads that
+one channel via the claude.ai Slack MCP connector, researches candidates, and writes entries. It
+keeps its watermark and its list of already-rejected URLs in `slack-import-state.json` (committed,
+so the whole team shares the state). Requires a one-time `/mcp` auth of "claude.ai Slack".
+
+**Scope rule**: that skill reads only the `flock-ai` channel, by `channel_id`. Never widen it to
+workspace-wide search, other channels, or DMs.
 
 ## Adding or editing an entry
 
