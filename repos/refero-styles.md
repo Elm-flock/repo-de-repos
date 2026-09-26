@@ -31,6 +31,6 @@ claude mcp add --transport http refero https://api.refero.design/mcp --header "A
 - Los términos permiten uso comercial en trabajo de diseño, pero **prohíben redistribuir, hacer scraping y usarlo para entrenar modelos**. Los MCP no oficiales de la comunidad hacen scraping, así que probablemente violan esos términos.
 - Los precios de los planes no se pudieron verificar: la página los renderiza con JS.
 
-Relacionado: [[hallmark]] ataca el mismo problema con reglas anti-slop y puede generar un `design.md` a partir de una captura, [[kombai]] es un agente de frontend completo, y [[skillsmp]] es el directorio de skills.
+Relacionado: [[awesome-design-md]] es la alternativa MIT y en git, con menos estilos (73), [[hallmark]] ataca el mismo problema con reglas anti-slop y puede generar un `design.md` a partir de una captura, [[kombai]] es un agente de frontend completo, y [[skillsmp]] es el directorio de skills.
 
 **Licencia**: contenido propietario (términos de uso de Refero); la skill oficial es MIT
