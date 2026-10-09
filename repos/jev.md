@@ -17,7 +17,7 @@ Modelo "System One" de TypeSafe AI: no genera texto, **decide**. Le pasás un es
 - **Casi gratis**: $0,042 por millón de tokens de input y el output no se cobra. En un benchmark de terceros, 500 llamadas costaron $0,008.
 - **Rápido**: 236-278 ms p50 medido por terceros, y el vendor dice 70-500 ms. Sirve para ponerlo en el camino de cada request en triage, ruteo o reglas de negocio.
 - **Se usa hoy por OpenRouter sin waitlist ni cuenta aparte** (`typesafe/jev-1.13`). Hay SDKs oficiales `typesafe-sdk` (PyPI) y `@typesafe-ai/sdk` (npm), ambos MIT, y una skill oficial `typesafe-ai/skills`.
-- **Ecosistema en días**: `browser-use/jev-ultrafast`, una composición experimental con [[json-render]] y una alternativa open-weights, [[laya]].
+- **Ecosistema en días**: `browser-use/jev-ultrafast`, una composición experimental con [[json-render]] y una alternativa open-weights, [[laya]]. Para ver casos reales: [madewithjev.com](https://madewithjev.com), directorio de terceros (no afiliado a TypeSafe, con placements pagos) que lista 822 proyectos hechos con Jev.
 - En el canal lo marcaron como candidato para triage de tickets y reglas de negocio en seguros. Dani probó integrarlo a la plataforma de agentes vía OpenRouter.
 
 ## Uso básico

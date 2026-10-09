@@ -33,7 +33,7 @@ class Triage(Agent, llm=get_llm_client("claude-haiku-4-5")):
 ```
 
 **Trampas:**
-- **Ejecuta código generado por el LLM, y los chequeos AST "no son un límite de contención"** (lo dice el propio repo). Correrlo en contenedor, VM o NVIDIA OpenShell.
+- **Ejecuta código generado por el LLM, y los chequeos AST "no son un límite de contención"** (lo dice el propio repo). Correrlo en contenedor, VM o NVIDIA [[openshell]].
 - Alpha 0.0.x, con 127 issues abiertos: la API va a cambiar.
 - Depende de LiteLLM. Fijan >=1.97.0 para evitar las versiones con backdoor (1.82.7 y 1.82.8).
 - GitHub muestra la licencia como "Other" porque NVIDIA editó el apéndice del texto Apache. El `pyproject` y PyPI dicen Apache-2.0.
